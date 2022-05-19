@@ -13,7 +13,6 @@ import static com.example.fulltextsearch.service.UserService.USER_INDEX_NAME;
 public record UserSearchService(ElasticFullSearch elasticFullSearch) implements SearchStrategy {
 
     public ResponseEntity<Object> listSearch() throws IOException {
-        elasticFullSearch.orAndSearch(USER_INDEX_NAME, User.class);
         return ResponseEntity.ok(
                 elasticFullSearch.search(USER_INDEX_NAME, User.class)
         );
